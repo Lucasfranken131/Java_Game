@@ -4,12 +4,18 @@ public class Player {
     public int HP;
     public int attack;
     public int defense;
+    public int level;
 
-    public Player(String name, int HP, int attack, int defense) {
+    public Player(String name, int HP, int attack, int defense, int level) {
         this.name = name;
         this.HP = HP;
         this.attack = attack;
         this.defense = defense;
+        this.level = level;
+    }
+
+    public int getHP() {
+        return this.HP;
     }
 
     public int getAttack() {
@@ -24,8 +30,10 @@ public class Player {
         else {
             attackDamage = this.attack * this.attack / enemy.defense;
         }
-        System.out.println(this.name + " deu " + attackDamage + " de dano");
         return attackDamage;
     }
     
+    public void setHP(int HP){
+        this.HP = HP;
+    }
 }
