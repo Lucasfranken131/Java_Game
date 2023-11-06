@@ -1,16 +1,21 @@
+package Players;
+import Enemies.Enemy;
+
 public class Player {
 
     public String name;
     public int HP;
     public int attack;
     public int defense;
+    public int mana;
     public int level;
 
-    public Player(String name, int HP, int attack, int defense, int level) {
+    public Player(String name, int HP, int attack, int defense, int mana, int level) {
         this.name = name;
         this.HP = HP;
         this.attack = attack;
         this.defense = defense;
+        this.mana = mana;
         this.level = level;
     }
 
@@ -31,6 +36,19 @@ public class Player {
             attackDamage = this.attack * this.attack / enemy.defense;
         }
         return attackDamage;
+    }
+
+    public void playerAttack(Enemy enemy) {
+        int dano = this.attackEnemy(enemy);
+        enemy.setHP(enemy.HP - dano);
+        System.out.println(this.name + " deu " + dano + " de dano");
+    }
+
+    public void getPlayerStats() {
+        System.out.println(" ");
+        System.out.println(this.name);
+        System.out.println("HP: " + this.HP);
+        System.out.println("Mana: " + this.mana);
     }
     
     public void setHP(int HP){

@@ -1,4 +1,8 @@
+package Battle;
 import java.util.Scanner;
+
+import Enemies.*;
+import Players.Player;
 
 public class Battle {
     Player player;
@@ -26,27 +30,19 @@ public class Battle {
 
             switch (choice) {
                 case 1:
-                    int dano = player.attackEnemy(enemy);
-                    enemy.setHP(enemy.HP - dano);
-                    System.out.println(player.name + " deu " + dano + " de dano");
-                    endBattle();
-                    turnAction();
+                    player.playerAttack(enemy);
+                    enemy.enemyAttack(player);
+                    player.getPlayerStats();
+                    enemy.getEnemyStats();
                     break;
 
                 case 2:
-                    int dano2 = enemy.attackEnemy(player) / 2;
-                    player.setHP(player.HP - dano2);
-                    System.out.println("Você tomou " + dano2 + " de dano");
-                    endBattle();
-                    dano2 = enemy.attackEnemy(player) * 2;
-                    turnAction();
+                    int dano = enemy.enemyAttack(player) / 2;
                     break;
 
                 case 3:
                     //bag.getItems();
                     System.out.println("É para aparecer os itens aqui");
-                    turnAction();
-                    endBattle();
                     break;
                     
                 case 4:
@@ -66,13 +62,14 @@ public class Battle {
     public int endBattle() {
         int playerWin;
         if(player.HP <= 0) {
+            System.out.println(" ");
             System.out.println("Game Over");
+            System.out.println(" ");
             playerWin = 1;
         }
         else if(enemy.HP <= 0) {
-            System.out.println("Você venceu");
             playerWin = 2;
-            enemy.verifyEnemyHP();
+            System.out.println("Você volta para o mapa.");
         }
         else {
             playerWin = 3;
