@@ -9,6 +9,7 @@ public class Enemy {
     public int attack;
     public int defense;
     public Player player;
+    public JLabel enemyImg = new JLabel();
 
     public Enemy(String name,int HP, int attack, int defense) {
         this.name = name;
@@ -34,11 +35,17 @@ public class Enemy {
         this.HP = HP; 
     }
 
+    public String verifyEnemyHP() {
+        if(this.HP <= 0) {
+            this.name = "explosion";
+            setEnemyImage();
+        }
+        return this.name;
+    }
+
     public JLabel setEnemyImage() {
-        JLabel enemyImg = new JLabel();
         String fileName = verifyEnemyImage(this.name);
         enemyImg.setIcon(new ImageIcon(fileName));
-        System.out.println(fileName);
         enemyImg.setSize(400, 400);
         Dimension size = enemyImg.getPreferredSize(); //Gets the size of the image
         enemyImg.setBounds(50, 30, size.width, size.height); //Sets the location of the image
@@ -51,9 +58,18 @@ public class Enemy {
             case "bat":
                 fileName = "imgs/bat.png";
                 break;
-        
+
+            case "explosion":
+                fileName = "imgs/explosion.png";
+                break;
+
+            case "slime":
+                fileName = "imgs/slime.png";
+                break;
+                
             default:
                 fileName = "imgs/pacman.jpg";
+                break;
         }
         return fileName;
     }

@@ -1,9 +1,4 @@
-import java.awt.Dimension;
 import java.util.Scanner;
-
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 public class Battle {
     Player player;
@@ -29,39 +24,41 @@ public class Battle {
             
             int choice = scan.nextInt();
 
-            if(choice == 1) {
-                int dano = player.attackEnemy(enemy);
-                enemy.setHP(enemy.HP - dano);
-                System.out.println(player.name + " deu " + dano + " de dano");
-                endBattle();
-                turnAction();
+            switch (choice) {
+                case 1:
+                    int dano = player.attackEnemy(enemy);
+                    enemy.setHP(enemy.HP - dano);
+                    System.out.println(player.name + " deu " + dano + " de dano");
+                    endBattle();
+                    turnAction();
+                    break;
+
+                case 2:
+                    int dano2 = enemy.attackEnemy(player) / 2;
+                    player.setHP(player.HP - dano2);
+                    System.out.println("Você tomou " + dano2 + " de dano");
+                    endBattle();
+                    dano2 = enemy.attackEnemy(player) * 2;
+                    turnAction();
+                    break;
+
+                case 3:
+                    //bag.getItems();
+                    System.out.println("É para aparecer os itens aqui");
+                    turnAction();
+                    endBattle();
+                    break;
+                    
+                case 4:
+                    //Volta para o mapa normal, com uma porcentagem é claro
+                    endBattle();
+                    break;
+
+                default:
+                    endBattle();
+                    turnAction();
+                    break;
             }
-
-            else if(choice == 2) {
-                int dano = enemy.attackEnemy(player) / 2;
-                player.setHP(player.HP - dano);
-                System.out.println("Você tomou " + dano + " de dano");
-                endBattle();
-                dano = enemy.attackEnemy(player) * 2;
-                turnAction();
-            }
-
-            else if(choice == 3) {
-                //bag.getItems();
-                System.out.println("É para aparecer os itens aqui");
-                turnAction();
-            }
-
-            else if(choice == 4) {
-                //Volta para o mapa normal, com uma porcentagem é claro;
-
-                turnAction();
-            }
-
-            else {
-                turnAction();
-            }
-
             return choice;
         }
     }
@@ -75,6 +72,7 @@ public class Battle {
         else if(enemy.HP <= 0) {
             System.out.println("Você venceu");
             playerWin = 2;
+            enemy.verifyEnemyHP();
         }
         else {
             playerWin = 3;
