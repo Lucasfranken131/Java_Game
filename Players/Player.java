@@ -4,13 +4,13 @@ import Enemies.Enemy;
 public class Player {
 
     public String name;
-    public int HP;
+    public double HP;
     public int attack;
     public int defense;
     public int mana;
     public int level;
 
-    public Player(String name, int HP, int attack, int defense, int mana, int level) {
+    public Player(String name, double HP, int attack, int defense, int mana, int level) {
         this.name = name;
         this.HP = HP;
         this.attack = attack;
@@ -19,7 +19,7 @@ public class Player {
         this.level = level;
     }
 
-    public int getHP() {
+    public double getHP() {
         return this.HP;
     }
 
@@ -51,7 +51,7 @@ public class Player {
         System.out.println("Mana: " + this.mana);
     }
     
-    public void setHP(int HP){
-        this.HP = HP;
+    public double setHP(double HP){
+        return this.HP = HP;
     }
 }

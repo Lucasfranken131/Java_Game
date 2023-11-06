@@ -1,7 +1,5 @@
 package Enemies;
 
-import java.awt.Dimension;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Players.Player;
@@ -40,8 +38,8 @@ public class Enemy {
         return attackDamage;
     }
 
-    public int enemyAttack(Player player) {
-        int dano =  this.attackEnemy(player);
+    public double enemyAttack(Player player, double d) {
+        double dano =  this.attackEnemy(player) * d;
         player.setHP(player.HP - dano);
         System.out.println("O inimigo lhe deu " + dano + " de dano");
         return dano;
@@ -53,7 +51,8 @@ public class Enemy {
         System.out.println("HP: " + this.HP);
     }
 
-    public void setHP(int HP) {
-        this.HP = HP; 
+    public int setHP(int HP) {
+        this.HP = HP;
+        return this.HP;
     }
 }

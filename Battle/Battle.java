@@ -31,13 +31,15 @@ public class Battle {
             switch (choice) {
                 case 1:
                     player.playerAttack(enemy);
-                    enemy.enemyAttack(player);
+                    enemy.enemyAttack(player, 1);
                     player.getPlayerStats();
                     enemy.getEnemyStats();
                     break;
 
                 case 2:
-                    int dano = enemy.enemyAttack(player) / 2;
+                    enemy.enemyAttack(player, 0.5);
+                    player.getPlayerStats();
+                    enemy.getEnemyStats();
                     break;
 
                 case 3:
