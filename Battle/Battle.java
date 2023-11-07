@@ -34,12 +34,22 @@ public class Battle {
                     enemy.enemyAttack(player, 1);
                     player.getPlayerStats();
                     enemy.getEnemyStats();
+                    if(endBattle() == 1){
+                        //Aqui faz a chamada da tela de Game Over
+                    }
+                    else if(endBattle() == 2) {
+                        //Aqui faz a chamada para o mapa.
+                    }
+                    else {
+                        turnAction();
+                    }
                     break;
 
                 case 2:
                     enemy.enemyAttack(player, 0.5);
                     player.getPlayerStats();
                     enemy.getEnemyStats();
+
                     break;
 
                 case 3:
