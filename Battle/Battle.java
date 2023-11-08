@@ -1,8 +1,5 @@
 package Battle;
 import java.util.Scanner;
-
-import javax.xml.stream.events.EndDocument;
-
 import Enemies.*;
 import Players.Player;
 

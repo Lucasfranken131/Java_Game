@@ -4,7 +4,8 @@ import javax.swing.JLabel;
 
 import Players.Player;
 
-public class Enemy {
+public abstract class Enemy {
+    public int id;
     public String name;
     public int HP;
     public int attack;
@@ -12,7 +13,8 @@ public class Enemy {
     public Player player;
     public JLabel enemyImg = new JLabel();
 
-    public Enemy(String name,int HP, int attack, int defense) {
+    public Enemy(int id, String name,int HP, int attack, int defense) {
+        this.id = id;
         this.name = name;
         this.HP = HP;
         this.attack = attack;

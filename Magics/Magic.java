@@ -1,5 +1,6 @@
 package Magics;
 
-public class Magic {
+public abstract class Magic {
+    int id;
     int damage;
 }

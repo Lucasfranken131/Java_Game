@@ -1,5 +1,7 @@
 import Battle.Battle;
 import Enemies.*;
+import Items.*;
+import Magics.*;
 import Maps.*;
 import Players.*;
 
