@@ -41,6 +41,7 @@ public class Player {
     public void playerAttack(Enemy enemy) {
         int dano = this.attackEnemy(enemy);
         enemy.setHP(enemy.HP - dano);
+        System.out.println(" ");
         System.out.println(this.name + " deu " + dano + " de dano");
     }
 

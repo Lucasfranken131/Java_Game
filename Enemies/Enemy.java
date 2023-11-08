@@ -41,7 +41,7 @@ public class Enemy {
     public double enemyAttack(Player player, double d) {
         double dano =  this.attackEnemy(player) * d;
         player.setHP(player.HP - dano);
-        System.out.println("O inimigo lhe deu " + dano + " de dano");
+        System.out.println(this.name + " lhe deu " + dano + " de dano");
         return dano;
     }
 
@@ -49,6 +49,7 @@ public class Enemy {
         System.out.println(" ");
         System.out.println(this.name);
         System.out.println("HP: " + this.HP);
+        System.out.println(" ");
     }
 
     public int setHP(int HP) {

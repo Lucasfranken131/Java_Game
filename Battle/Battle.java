@@ -1,6 +1,8 @@
 package Battle;
 import java.util.Scanner;
 
+import javax.xml.stream.events.EndDocument;
+
 import Enemies.*;
 import Players.Player;
 
@@ -14,16 +16,18 @@ public class Battle {
         turnAction();
     }
 
-    public String getPlayer() {
-        return this.player.name;
-    }
-
     public int turnAction() {
         try (Scanner scan = new Scanner(System.in)) {
+
+            System.out.println(" ");
+            System.out.println(enemy.name + "");
+            System.out.println(" ");
+
             System.out.println("1 - Atacar");
             System.out.println("2 - Defender");
             System.out.println("3 - Bolsa");
-            System.out.println("4 - Fugir");
+            System.out.println("4 - Magia");
+            System.out.println("5 - Fugir");
             System.out.println(" ");
             
             int choice = scan.nextInt();
@@ -34,15 +38,8 @@ public class Battle {
                     enemy.enemyAttack(player, 1);
                     player.getPlayerStats();
                     enemy.getEnemyStats();
-                    if(endBattle() == 1){
-                        //Aqui faz a chamada da tela de Game Over
-                    }
-                    else if(endBattle() == 2) {
-                        //Aqui faz a chamada para o mapa.
-                    }
-                    else {
-                        turnAction();
-                    }
+
+                    battleStatus();
                     break;
 
                 case 2:
@@ -50,20 +47,25 @@ public class Battle {
                     player.getPlayerStats();
                     enemy.getEnemyStats();
 
+                    battleStatus();
                     break;
 
                 case 3:
                     //bag.getItems();
                     System.out.println("É para aparecer os itens aqui");
+                    turnAction();
                     break;
-                    
+
                 case 4:
+                    //getMagics();
+                    
+                case 5:
                     //Volta para o mapa normal, com uma porcentagem é claro
+                    enemy.setHP(0);
                     endBattle();
                     break;
 
                 default:
-                    endBattle();
                     turnAction();
                     break;
             }
@@ -85,6 +87,21 @@ public class Battle {
         }
         else {
             playerWin = 3;
+        }
+        
+        return playerWin;
+    }
+
+    public int battleStatus() {
+        int playerWin = endBattle();
+        if(playerWin == 1){
+            //Aqui faz a chamada da tela de Game Over
+        }
+        else if(playerWin == 2) {
+            //Aqui faz a chamada para o mapa.
+        }
+        else {
+            turnAction();
         }
         return playerWin;
     }
