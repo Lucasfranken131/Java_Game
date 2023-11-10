@@ -1,4 +1,6 @@
 package Maps;
+import java.awt.event.KeyEvent;
+
 public class Map {
     public int x;
     public int y;
@@ -34,5 +36,29 @@ public class Map {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+
+    public void keyEvent(KeyEvent e) {
+        int key = e.getKeyCode();
+
+        if (key == KeyEvent.VK_LEFT) {
+            this.x = -1;
+        }
+    
+        if (key == KeyEvent.VK_RIGHT) {
+            this.x = +1;
+        }
+    
+        if (key == KeyEvent.VK_UP) {
+            this.y = +1;
+        }
+    
+        if (key == KeyEvent.VK_DOWN) {
+            this.y = -1;
+        }
+
+        System.out.println("X:" + this.x);
+        System.out.println("Y" + this.y);
     }
 }
