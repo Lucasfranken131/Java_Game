@@ -11,6 +11,6 @@ public class Game {
         Player player = new Player("Jorge", 50, 10, 10, 10, 1);
 
         Bat bat = new Bat();
-        Battle battle = new Battle(player, bat);
+        Battle battle = new Battle(player, bat, mapa);
     }
 }

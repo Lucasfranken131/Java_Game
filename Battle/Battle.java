@@ -1,15 +1,18 @@
 package Battle;
 import java.util.Scanner;
 import Enemies.*;
-import Players.Player;
+import Players.*;
+import Maps.*;
 
 public class Battle {
     Player player;
     Enemy enemy;
+    Map map;
 
-    public Battle(Player player, Enemy enemy) {
+    public Battle(Player player, Enemy enemy, Map map) {
         this.player = player;
         this.enemy = enemy;
+        this.map = map;
         turnAction();
     }
 
@@ -60,6 +63,8 @@ public class Battle {
                     //Volta para o mapa normal, com uma porcentagem é claro
                     enemy.setHP(0);
                     endBattle();
+                    this.map.setMapOn(true);
+                    this.map.isMapOn();
                     break;
 
                 default:
@@ -96,6 +101,8 @@ public class Battle {
         }
         else if(playerWin == 2) {
             //Aqui faz a chamada para o mapa.
+            this.map.setMapOn(true);
+            this.map.isMapOn();
         }
         else {
             turnAction();
