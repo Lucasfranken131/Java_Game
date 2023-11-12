@@ -2,6 +2,7 @@ package Battle;
 import java.util.Scanner;
 import Enemies.*;
 import Players.*;
+import System.ClearScreen;
 import Maps.*;
 
 public class Battle {
@@ -34,6 +35,7 @@ public class Battle {
 
             switch (choice) {
                 case 1:
+                    ClearScreen.clrscr();
                     player.playerAttack(enemy);
                     enemy.enemyAttack(player, 1);
                     player.getPlayerStats();
@@ -43,6 +45,7 @@ public class Battle {
                     break;
 
                 case 2:
+                    ClearScreen.clrscr();
                     enemy.enemyAttack(player, 0.5);
                     player.getPlayerStats();
                     enemy.getEnemyStats();
@@ -51,6 +54,7 @@ public class Battle {
                     break;
 
                 case 3:
+                    ClearScreen.clrscr();
                     //bag.getItems();
                     System.out.println("É para aparecer os itens aqui");
                     turnAction();
@@ -60,6 +64,7 @@ public class Battle {
                     //getMagics();
                     
                 case 5:
+                    ClearScreen.clrscr();
                     //Volta para o mapa normal, com uma porcentagem é claro
                     enemy.setHP(0);
                     endBattle();
@@ -68,6 +73,7 @@ public class Battle {
                     break;
 
                 default:
+                    ClearScreen.clrscr();
                     turnAction();
                     break;
             }
