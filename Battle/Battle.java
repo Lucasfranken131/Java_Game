@@ -14,6 +14,8 @@ public class Battle {
         this.player = player;
         this.enemy = enemy;
         this.map = map;
+        ClearScreen.clrscr();
+        System.out.println("Você é atacado por " + this.enemy.name + ":");
         turnAction();
     }
 
@@ -108,7 +110,6 @@ public class Battle {
         else if(playerWin == 2) {
             //Aqui faz a chamada para o mapa.
             this.map.setMapOn(true);
-            this.map.isMapOn();
         }
         else {
             turnAction();

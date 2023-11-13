@@ -7,10 +7,9 @@ public class Map {
     public String direction;
     public boolean mapOn;
 
-    public Map(int x, int y, String area, String direction) {
+    public Map(int x, int y, String direction) {
         this.x = x;
         this.y = y;
-        this.area = area;
         this.direction = direction;
     }
 
@@ -20,10 +19,6 @@ public class Map {
 
     public int getY() {
         return this.y;
-    }
-
-    public String getArea() {
-        return this.area;
     }
 
     public String getDirection() {
@@ -59,5 +54,28 @@ public class Map {
         //while(this.mapOn == false) {
             //
         //}
+    }
+
+    public String showDirection() {
+        String playerDirection;
+        switch(this.direction) {
+            case "up":
+                playerDirection = "^";
+
+            case "left":
+                playerDirection = "<";
+
+            case "down":
+                playerDirection = ">";
+
+            case "right":
+                playerDirection = "v";
+
+            default:
+                playerDirection = "^";
+            break;
+        }
+        System.out.println(playerDirection);
+        return playerDirection;
     }
 }
