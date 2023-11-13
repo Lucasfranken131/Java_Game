@@ -8,9 +8,10 @@ import Players.*;
 public class Game {
     public static void main(String[] args) {
         Initial initial = new Initial(5, 12, "up");
-        initial.showMap();
 
-        Player player = new Player("Jorge", 50, 10, 10, 10, 1);
+        Player player = new Player("Wagner", 50, 10, 10, 10, 1);
 
+        Bat bat = new Bat();
+        Battle battle = new Battle(player, bat, initial);
     }
 }

@@ -71,7 +71,7 @@ public class Battle {
                     enemy.setHP(0);
                     endBattle();
                     this.map.setMapOn(true);
-                    this.map.isMapOn();
+                    map.showMap();
                     break;
 
                 default:

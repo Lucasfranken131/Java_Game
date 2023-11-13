@@ -1,5 +1,9 @@
 package Maps;
 
+import java.util.Scanner;
+
+import System.ClearScreen;
+
 public class Map {
     public int x;
     public int y;
@@ -47,15 +51,6 @@ public class Map {
         return map;
     }
 
-    public void isMapOn() {
-        while(this.mapOn == true) {
-
-        }
-        //while(this.mapOn == false) {
-            //
-        //}
-    }
-
     public String showDirection() {
         String playerDirection;
         switch(this.direction) {
@@ -75,7 +70,42 @@ public class Map {
                 playerDirection = "^";
             break;
         }
-        System.out.println(playerDirection);
         return playerDirection;
+    }
+
+    public String movePlayer() {
+        String move;
+        Scanner scan = new Scanner(System.in);
+            System.out.println("w - Ir para cima");
+            System.out.println("a - Ir para a esquerda");
+            System.out.println("s - Ir para Baixo");
+            System.out.println("d - Ir para a direita");
+            System.out.println("Input:");
+            System.out.println(" ");
+            move = scan.nextLine();
+        if(move.equals("w")) {
+            setY(this.y + 1);
+        }
+        else if(move.equals("a")) {
+            setX(this.x - 1);
+        }
+        else if(move.equals("s")) {
+            setY(this.y - 1);
+        }
+        else if(move.equals("d")) {
+            setX(this.x + 1);
+        }
+        else {
+            ClearScreen.clrscr();
+            System.out.println("Opção inválida");
+            System.out.println(" ");
+            movePlayer();
+        }
+        return move;
+    }
+
+
+    public void showMap() {
+        //Só para ficar essa merda
     }
 }

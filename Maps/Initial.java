@@ -2,10 +2,13 @@ package Maps;
 
 import java.util.Scanner;
 
+import System.ClearScreen;
+
 public class Initial extends Map {
 
     public Initial(int x, int y, String direction) {
         super(x, y, direction);
+        //showMap();
     }
 
     public void showMap() {
@@ -28,17 +31,9 @@ public class Initial extends Map {
         System.out.println(" ");
         System.out.println("Posição X: " + this.x);
         System.out.println("Posição Y: " + this.y);
-        System.out.println("Direção: " + this.direction);
-    }
-
-    public String movePlayer() {
-        String move;
-        Scanner scan = new Scanner(System.in);
-        System.out.println("w - Ir para cima");
-        System.out.println("a - Ir para a esquerda");
-        System.out.println("s - Ir para Baixo");
-        System.out.println("d - Ir para a direita");
-        move = scan.nextLine();
-        return move;
+        System.out.println("Direção: " + showDirection());
+        movePlayer();
+        ClearScreen.clrscr();
+        showMap();
     }
 }
