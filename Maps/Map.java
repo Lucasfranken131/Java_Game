@@ -1,54 +1,34 @@
 package Maps;
-
+import Battle.Battle;
+import Players.Player;
+import Enemies.Enemy;
 import java.util.Scanner;
-
 import System.ClearScreen;
+import java.util.Random;
 
 public class Map {
     public int x;
     public int y;
     public String area;
+    public int type; //type 1 = Sem monstros, type 2 = Com monstros
     public String direction;
+    public int steps; // é para contar os passos, quantos mais passos maior a chance de ter uma batalha
+    Player player;
+    Enemy enemy;
     public boolean mapOn;
 
-    public Map(int x, int y, String direction) {
+    public Map(int x, int y, int type, String direction, Player player, Enemy enemy) {
         this.x = x;
         this.y = y;
+        this.type = type;
         this.direction = direction;
-    }
-
-    public int getX() {
-        return this.x;
-    }
-
-    public int getY() {
-        return this.y;
-    }
-
-    public String getDirection() {
-        return this.direction;
-    }
-
-    public boolean getMapOn() {
-        return this.mapOn;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
+        this.player = player;
+        this.enemy = enemy;
+        this.steps = 0;
     }
 
     public void setMapOn(boolean mapOn) {
         this.mapOn = mapOn;
-    }
-
-    public int[] arrayMap() {
-        int[] map = {this.x, this.y};
-        System.out.println(getY()+ " "+" "+ getX()); 
-        return map;
     }
 
     public String showDirection() {
@@ -76,13 +56,13 @@ public class Map {
     public String movePlayer() {
         String move;
         Scanner scan = new Scanner(System.in);
-            System.out.println("w - Ir para cima");
-            System.out.println("a - Ir para a esquerda");
-            System.out.println("s - Ir para Baixo");
-            System.out.println("d - Ir para a direita");
-            System.out.println("Input:");
-            System.out.println(" ");
-            move = scan.nextLine();
+        System.out.println("w - Ir para cima");
+        System.out.println("a - Ir para a esquerda");
+        System.out.println("s - Ir para Baixo");
+        System.out.println("d - Ir para a direita");
+        System.out.println("Input:");
+        System.out.println(" ");
+        move = scan.nextLine();
         if(move.equals("w")) {
             setY(this.y + 1);
         }
@@ -101,11 +81,52 @@ public class Map {
             System.out.println(" ");
             movePlayer();
         }
+        setSteps(steps + 1);
+        mapToBattle();
         return move;
     }
 
+    public void mapToBattle() {
+        Random random = new Random();
+        int battleChance = random.nextInt(100 + this.getSteps());
+        if(battleChance >= 50) {
+            Battle battle = new Battle(this.player, this.enemy, this);
+        }
+    }
+
+    public int getX() {
+        return this.x;
+    }
+
+    public int getY() {
+        return this.y;
+    }
+
+    public String getDirection() {
+        return this.direction;
+    }
+
+    public boolean getMapOn() {
+        return this.mapOn;
+    }
+
+    public int getSteps() {
+        return this.steps;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public void setSteps(int steps) {
+        this.steps = steps;
+    }
 
     public void showMap() {
-        //Só para ficar essa merda
+        //Feito para ser chamado nas sub-classes
     }
 }

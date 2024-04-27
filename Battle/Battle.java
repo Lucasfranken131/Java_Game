@@ -15,7 +15,7 @@ public class Battle {
         this.enemy = enemy;
         this.map = map;
         ClearScreen.clrscr();
-        System.out.println("Você é atacado por " + this.enemy.name + ":");
+        System.out.println("Você é atacado por " + this.enemy.getName() + ":");
         turnAction();
     }
 
@@ -23,9 +23,8 @@ public class Battle {
         try (Scanner scan = new Scanner(System.in)) {
 
             System.out.println(" ");
-            System.out.println(enemy.name + "");
+            System.out.println(enemy.getName() + "");
             System.out.println(" ");
-
             System.out.println("1 - Atacar");
             System.out.println("2 - Defender");
             System.out.println("3 - Bolsa");
@@ -42,29 +41,23 @@ public class Battle {
                     enemy.enemyAttack(player, 1);
                     player.getPlayerStats();
                     enemy.getEnemyStats();
-
                     battleStatus();
                     break;
-
                 case 2:
                     ClearScreen.clrscr();
                     enemy.enemyAttack(player, 0.5);
                     player.getPlayerStats();
                     enemy.getEnemyStats();
-
                     battleStatus();
                     break;
-
                 case 3:
                     ClearScreen.clrscr();
                     //bag.getItems();
                     System.out.println("É para aparecer os itens aqui");
                     turnAction();
                     break;
-
                 case 4:
-                    //getMagics();
-                    
+                    //getMagics(); 
                 case 5:
                     ClearScreen.clrscr();
                     //Volta para o mapa normal, com uma porcentagem é claro
@@ -73,7 +66,6 @@ public class Battle {
                     this.map.setMapOn(true);
                     map.showMap();
                     break;
-
                 default:
                     ClearScreen.clrscr();
                     turnAction();
@@ -85,13 +77,13 @@ public class Battle {
 
     public int endBattle() {
         int playerWin;
-        if(player.HP <= 0) {
+        if(player.getHP() <= 0) {
             System.out.println(" ");
             System.out.println("Game Over");
             System.out.println(" ");
             playerWin = 1;
         }
-        else if(enemy.HP <= 0) {
+        else if(enemy.getHP() <= 0) {
             playerWin = 2;
             System.out.println("Você volta para o mapa.");
         }
@@ -110,6 +102,8 @@ public class Battle {
         else if(playerWin == 2) {
             //Aqui faz a chamada para o mapa.
             this.map.setMapOn(true);
+            map.setSteps(0);
+            map.showMap();
         }
         else {
             turnAction();

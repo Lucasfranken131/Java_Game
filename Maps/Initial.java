@@ -1,14 +1,14 @@
 package Maps;
-
-import java.util.Scanner;
-
+import Enemies.Enemy;
+import Players.Player;
 import System.ClearScreen;
 
 public class Initial extends Map {
+    static int type = 2;
 
-    public Initial(int x, int y, String direction) {
-        super(x, y, direction);
-        //showMap();
+    public Initial(int x, int y, String direction, Player player, Enemy enemy) {
+        super(x, y, type, direction, player, enemy);
+        showMap();
     }
 
     public void showMap() {

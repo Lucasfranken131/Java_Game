@@ -7,8 +7,9 @@ public class Bat extends Enemy {
     static int HP = 20;
     static int attack = 10;
     static int defense = 10;
+    static int speed = 10;
     
     public Bat() {
-        super(id, name ,HP, attack, defense);
+        super(id, name ,HP, attack, defense, speed);
     }
 }
