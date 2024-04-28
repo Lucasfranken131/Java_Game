@@ -17,13 +17,12 @@ public class Map {
     Enemy enemy;
     public boolean mapOn;
 
-    public Map(int x, int y, int type, String direction, Player player, Enemy enemy) {
+    public Map(int x, int y, int type, String direction, Player player) {
         this.x = x;
         this.y = y;
         this.type = type;
         this.direction = direction;
         this.player = player;
-        this.enemy = enemy;
         this.steps = 0;
     }
 

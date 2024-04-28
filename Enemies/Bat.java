@@ -4,10 +4,10 @@ public class Bat extends Enemy {
 
     static int id = 1;
     static String name = "Morcego";
-    static int HP = 20;
-    static int attack = 10;
-    static int defense = 10;
-    static int speed = 10;
+    static int HP = 10;
+    static int attack = 5;
+    static int defense = 5;
+    static int speed = 5;
     static String image = "                                                                                \r\n" + //
                 "                                                     &#                         \r\n" + //
                 "                          @((#&@                &%%&@&                          \r\n" + //

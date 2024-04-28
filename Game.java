@@ -8,7 +8,6 @@ import Players.*;
 public class Game {
     public static void main(String[] args) {
         Player player = new Player("Crauser", 50, 10, 10, 10, 10, 1);
-        Bat bat = new Bat();
-        Initial initial = new Initial(5, 12, "up", player, bat);
+        Initial initial = new Initial(5, 12, "up", player);
     }
 }

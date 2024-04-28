@@ -4,14 +4,15 @@ import java.util.Random;
 import Battle.Battle;
 import Enemies.Bat;
 import Enemies.Enemy;
+import Enemies.Goblin;
 import Players.Player;
 import System.ClearScreen;
 
 public class Initial extends Map {
     static int type = 2;
 
-    public Initial(int x, int y, String direction, Player player, Enemy enemy) {
-        super(x, y, type, direction, player, enemy);
+    public Initial(int x, int y, String direction, Player player) {
+        super(x, y, type, direction, player);
         showMap();
     }
 
@@ -48,10 +49,10 @@ public class Initial extends Map {
             Enemy enemy1 = null;
             int enemyFormation = random.nextInt(100);
             if(enemyFormation <= 25) {
-                enemy1 = new Bat();
+                enemy1 = new Goblin();
             }
             else if(enemyFormation <= 50) {
-                enemy1 = new Bat();
+                enemy1 = new Goblin();
             }
             else if(enemyFormation <= 75) {
                 enemy1 = new Bat();
@@ -60,6 +61,7 @@ public class Initial extends Map {
                 enemy1 = new Bat();
             }
             Battle battle = new Battle(this.player, enemy1, this);
+            battle = null;
         }
     }
 }

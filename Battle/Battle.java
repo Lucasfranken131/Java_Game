@@ -14,66 +14,62 @@ public class Battle {
         this.player = player;
         this.enemy = enemy;
         this.map = map;
-        ClearScreen.clrscr();
-        System.out.println("Você é atacado por " + this.enemy.getName() + ":");
         turnAction();
+        ClearScreen.clrscr();
     }
 
     public int turnAction() {
-        try (Scanner scan = new Scanner(System.in)) {
+        Scanner scan = new Scanner(System.in);
 
-            System.out.println(" ");
-            System.out.println(enemy.getName() + "");
-            System.out.println(" ");
-            System.out.println("1 - Atacar");
-            System.out.println("2 - Defender");
-            System.out.println("3 - Bolsa");
-            System.out.println("4 - Magia");
-            System.out.println("5 - Fugir");
-            System.out.println(" ");
-            
-            int choice = scan.nextInt();
-            ClearScreen.clrscr();
-            switch (choice) {
-                case 1:
-                    ClearScreen.clrscr();
-                    player.playerAttack(enemy);
-                    enemy.enemyAttack(player, 1);
-                    player.getPlayerStats();
-                    enemy.getEnemyStats();
-                    player.getPlayerStats();
-                    battleStatus();
-                    break;
-                case 2:
-                    ClearScreen.clrscr();
-                    enemy.enemyAttack(player, 0.5);
-                    player.getPlayerStats();
-                    enemy.getEnemyStats();
-                    battleStatus();
-                    break;
-                case 3:
-                    ClearScreen.clrscr();
-                    //bag.getItems();
-                    System.out.println("É para aparecer os itens aqui");
-                    turnAction();
-                    break;
-                case 4:
-                    //getMagics(); 
-                case 5:
-                    ClearScreen.clrscr();
-                    //Volta para o mapa normal, com uma porcentagem é claro
-                    enemy.setHP(0);
-                    endBattle();
-                    this.map.setMapOn(true);
-                    map.showMap();
-                    break;
-                default:
-                    ClearScreen.clrscr();
-                    turnAction();
-                    break;
-            }
-            return choice;
+        System.out.println(" ");
+        System.out.println("Você é atacado por " + this.enemy.getName() + ":");
+        System.out.println(" ");
+        enemy.getEnemyStats();
+        System.out.println(" ");
+        System.out.println("1 - Atacar");
+        System.out.println("2 - Defender");
+        System.out.println("3 - Bolsa");
+        System.out.println("4 - Magia");
+        System.out.println("5 - Fugir");
+        System.out.println(" ");
+        
+        int choice = scan.nextInt();
+
+        switch (choice) {
+            case 1:
+
+                player.playerAttack(enemy);
+                enemy.enemyAttack(player, 1);
+                player.getPlayerStats();
+                enemy.getEnemyStats();
+                player.getPlayerStats();
+                battleStatus();
+                break;
+            case 2:
+                enemy.enemyAttack(player, 0.5);
+                player.getPlayerStats();
+                enemy.getEnemyStats();
+                battleStatus();
+                break;
+            case 3:
+                //bag.getItems();
+                System.out.println("É para aparecer os itens aqui");
+                turnAction();
+                break;
+            case 4:
+                //getMagics(); 
+            case 5:
+                //Volta para o mapa normal, com uma porcentagem é claro
+                enemy.setHP(0);
+                endBattle();
+                this.map.setMapOn(true);
+                map.showMap();
+                break;
+            default:
+                turnAction();
+                break;
         }
+        return choice;
     }
 
     public int endBattle() {
@@ -85,7 +81,6 @@ public class Battle {
             playerWin = 1;
         }
         else if(enemy.getHP() <= 0) {
-            ClearScreen.clrscr();
             playerWin = 2;
             System.out.println("Você volta para o mapa.");
         }
@@ -98,6 +93,7 @@ public class Battle {
 
     public int battleStatus() {
         int playerWin = endBattle();
+        ClearScreen.clrscr();
         if(playerWin == 1){
             //Aqui faz a chamada da tela de Game Over
         }
