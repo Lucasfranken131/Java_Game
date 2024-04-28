@@ -8,15 +8,17 @@ public abstract class Enemy {
     protected int attack;
     protected int defense;
     protected int speed;
+    protected String image;
     protected Player player;
 
-    public Enemy(int id, String name,int HP, int attack, int defense, int speed) {
+    public Enemy(int id, String name,int HP, int attack, int defense, int speed, String image) {
         this.id = id;
         this.name = name;
         this.HP = HP;
         this.attack = attack;
         this.defense = defense;
         this.speed = speed;
+        this.image = image;
     }
 
     public int attackEnemy(Player player) {
@@ -40,9 +42,10 @@ public abstract class Enemy {
 
     public void getEnemyStats() {
         System.out.println(" ");
+        System.out.println(this.image);
+        System.out.println(" ");
         System.out.println(this.name);
         System.out.println("HP: " + this.HP);
-        System.out.println(" ");
     }
 
     public String getName() {
@@ -63,6 +66,10 @@ public abstract class Enemy {
 
     public int getSpeed() {
         return this.speed;
+    }
+
+    public String getImage() {
+        return this.image;
     }
 
     public int setHP(int HP) {

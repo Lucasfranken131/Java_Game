@@ -1,4 +1,8 @@
 package Maps;
+import java.util.Random;
+
+import Battle.Battle;
+import Enemies.Bat;
 import Enemies.Enemy;
 import Players.Player;
 import System.ClearScreen;
@@ -35,5 +39,27 @@ public class Initial extends Map {
         movePlayer();
         ClearScreen.clrscr();
         showMap();
+    }
+
+    public void mapToBattle() {
+        Random random = new Random();
+        int battleChance = random.nextInt(100 + this.getSteps());
+        if(battleChance >= 70) {
+            Enemy enemy1 = null;
+            int enemyFormation = random.nextInt(100);
+            if(enemyFormation <= 25) {
+                enemy1 = new Bat();
+            }
+            else if(enemyFormation <= 50) {
+                enemy1 = new Bat();
+            }
+            else if(enemyFormation <= 75) {
+                enemy1 = new Bat();
+            }
+            else if(enemyFormation > 75) {
+                enemy1 = new Bat();
+            }
+            Battle battle = new Battle(this.player, enemy1, this);
+        }
     }
 }

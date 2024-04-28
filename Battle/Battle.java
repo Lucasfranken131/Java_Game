@@ -33,7 +33,7 @@ public class Battle {
             System.out.println(" ");
             
             int choice = scan.nextInt();
-
+            ClearScreen.clrscr();
             switch (choice) {
                 case 1:
                     ClearScreen.clrscr();
@@ -41,6 +41,7 @@ public class Battle {
                     enemy.enemyAttack(player, 1);
                     player.getPlayerStats();
                     enemy.getEnemyStats();
+                    player.getPlayerStats();
                     battleStatus();
                     break;
                 case 2:
@@ -84,6 +85,7 @@ public class Battle {
             playerWin = 1;
         }
         else if(enemy.getHP() <= 0) {
+            ClearScreen.clrscr();
             playerWin = 2;
             System.out.println("Você volta para o mapa.");
         }
