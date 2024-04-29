@@ -82,6 +82,7 @@ public class Map {
         }
         setSteps(steps + 1);
         mapToBattle();
+        ClearScreen.clrscr();
         return move;
     }
 

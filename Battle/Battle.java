@@ -19,56 +19,59 @@ public class Battle {
     }
 
     public int turnAction() {
+        ClearScreen.clrscr();
         Scanner scan = new Scanner(System.in);
 
-        System.out.println(" ");
-        System.out.println("Você é atacado por " + this.enemy.getName() + ":");
-        System.out.println(" ");
-        enemy.getEnemyStats();
-        System.out.println(" ");
-        System.out.println("1 - Atacar");
-        System.out.println("2 - Defender");
-        System.out.println("3 - Bolsa");
-        System.out.println("4 - Magia");
-        System.out.println("5 - Fugir");
-        System.out.println(" ");
-        
-        int choice = scan.nextInt();
+        int choice;
+        do {
+            System.out.println(" ");
+            System.out.println("Você é atacado por " + this.enemy.getName() + ":");
+            System.out.println(" ");
+            enemy.getEnemyStats();
+            System.out.println(" ");
+            System.out.println("1 - Atacar");
+            System.out.println("2 - Defender");
+            System.out.println("3 - Bolsa");
+            System.out.println("4 - Magia");
+            System.out.println("5 - Fugir");
+            System.out.println(" ");
+            
+            choice = scan.nextInt();
 
-        switch (choice) {
-            case 1:
+            switch (choice) {
+                case 1:
 
-                player.playerAttack(enemy);
-                enemy.enemyAttack(player, 1);
-                player.getPlayerStats();
-                enemy.getEnemyStats();
-                player.getPlayerStats();
-                battleStatus();
-                break;
-            case 2:
-                enemy.enemyAttack(player, 0.5);
-                player.getPlayerStats();
-                enemy.getEnemyStats();
-                battleStatus();
-                break;
-            case 3:
-                //bag.getItems();
-                System.out.println("É para aparecer os itens aqui");
-                turnAction();
-                break;
-            case 4:
-                //getMagics(); 
-            case 5:
-                //Volta para o mapa normal, com uma porcentagem é claro
-                enemy.setHP(0);
-                endBattle();
-                this.map.setMapOn(true);
-                map.showMap();
-                break;
-            default:
-                turnAction();
-                break;
-        }
+                    player.playerAttack(enemy);
+                    enemy.enemyAttack(player, 1);
+                    player.getPlayerStats();
+                    enemy.getEnemyStats();
+                    player.getPlayerStats();
+                    battleStatus();
+                    break;
+                case 2:
+                    enemy.enemyAttack(player, 0.5);
+                    player.getPlayerStats();
+                    enemy.getEnemyStats();
+                    battleStatus();
+                    break;
+                case 3:
+                    player.getItems();
+                    turnAction();
+                    break;
+                case 4:
+                    //getMagics(); 
+                case 5:
+                    //Volta para o mapa normal, com uma porcentagem é claro
+                    enemy.setHP(0);
+                    endBattle();
+                    this.map.setMapOn(true);
+                    map.showMap();
+                    break;
+                default:
+                    System.out.println("Escolha inválida. Tente novamente.");
+                    break;
+            }
+        } while(choice < 1 || choice > 5);
         return choice;
     }
 

@@ -1,5 +1,6 @@
 package Players;
 import Enemies.Enemy;
+import Items.Bolsa.Bag;
 
 public class Player {
 
@@ -10,8 +11,9 @@ public class Player {
     private int mana;
     private int speed;
     private int level;
+    Bag bag;
 
-    public Player(String name, double HP, int attack, int defense, int mana, int speed, int level) {
+    public Player(String name, double HP, int attack, int defense, int mana, int speed, int level, Bag bag) {
         this.name = name;
         this.HP = HP;
         this.attack = attack;
@@ -19,6 +21,7 @@ public class Player {
         this.mana = mana;
         this.speed = speed;
         this.level = level;
+        this.bag = bag;
     }
 
     public int damage(Enemy enemy) {
@@ -66,6 +69,10 @@ public class Player {
     
     public int getLevel() {
         return this.level;
+    }
+
+    public void getItems() {
+        bag.displayItems();
     }
     
     public double setHP(double HP){

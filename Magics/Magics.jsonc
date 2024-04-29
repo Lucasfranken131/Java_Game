@@ -1,4 +1,4 @@
-// Names and IDs of the magics.
+//Json para ter todas as informações sobre as magias.
 {
     "magics": {
         "fire": 1,
