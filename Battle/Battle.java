@@ -27,7 +27,10 @@ public class Battle {
             System.out.println(" ");
             System.out.println("Você é atacado por " + this.enemy.getName() + ":");
             System.out.println(" ");
-            enemy.getEnemyStats();
+            System.out.println(enemy.getImage());
+            System.out.println(" ");
+            System.out.println(enemy.getName());
+            System.out.println("HP: " + enemy.getHP());
             System.out.println(" ");
             System.out.println("1 - Atacar");
             System.out.println("2 - Defender");
