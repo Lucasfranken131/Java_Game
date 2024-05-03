@@ -9,9 +9,9 @@ import Players.*;
 public class Game {
     public static void main(String[] args) {
         Bag bolsa = new Bag();
+        Player player = new Player("Crauser", 50, 50, 10, 10, 10, 10, 10, 1, bolsa);
         Potion potion = new Potion();
-        bolsa.addItems(potion, 50);
-        Player player = new Player("Crauser", 50, 10, 10, 10, 10, 1, bolsa);
+        bolsa.addItems(potion, 3);
         Initial initial = new Initial(5, 12, "up", player);
     }
 }

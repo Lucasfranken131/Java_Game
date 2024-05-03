@@ -1,5 +1,7 @@
 package Items;
 
+import Players.Player;
+
 public class Potion extends Item {
 
     static int id = 1;
@@ -9,5 +11,13 @@ public class Potion extends Item {
 
     public Potion() {
         super(id, name, type, price);
+    }
+
+    public void useItem(Player player) {
+        player.setHP(player.getHP() + 20);
+        player.correctValues();
+        System.out.println(" ");
+        System.out.println("A poção curou 20 de HP de " + player.getName());
+        System.out.println(" ");
     }
 }

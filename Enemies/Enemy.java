@@ -38,11 +38,10 @@ public abstract class Enemy {
             player.setHP(player.getHP() - dano);
             System.out.println(this.name + " lhe deu " + dano + " de dano");
         }
+        player.correctValues();
     }
 
     public void getEnemyStats() {
-        System.out.println(" ");
-        System.out.println(this.image);
         System.out.println(" ");
         System.out.println(this.name);
         System.out.println("HP: " + this.HP);

@@ -32,6 +32,9 @@ public class Battle {
             System.out.println(enemy.getName());
             System.out.println("HP: " + enemy.getHP());
             System.out.println(" ");
+            System.out.println(player.getName());
+            System.out.println("HP: " + player.getHP());
+            System.out.println(" ");
             System.out.println("1 - Atacar");
             System.out.println("2 - Defender");
             System.out.println("3 - Bolsa");
@@ -43,23 +46,18 @@ public class Battle {
 
             switch (choice) {
                 case 1:
-
                     player.playerAttack(enemy);
                     enemy.enemyAttack(player, 1);
-                    player.getPlayerStats();
-                    enemy.getEnemyStats();
-                    player.getPlayerStats();
                     battleStatus();
                     break;
                 case 2:
                     enemy.enemyAttack(player, 0.5);
-                    player.getPlayerStats();
-                    enemy.getEnemyStats();
                     battleStatus();
                     break;
                 case 3:
                     player.getItems();
-                    turnAction();
+                    enemy.enemyAttack(player, 1);
+                    battleStatus();
                     break;
                 case 4:
                     //getMagics(); 

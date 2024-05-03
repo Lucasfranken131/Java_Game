@@ -1,5 +1,8 @@
 package Items;
 
+import Enemies.Enemy;
+import Players.Player;
+
 public abstract class Item {
     protected int id;
     protected String name;
@@ -27,5 +30,17 @@ public abstract class Item {
 
     public int getPrice() {
         return this.price;
+    }
+
+    public void useItem() {
+        // Cada item vai ter sua função
+    }
+
+    public void useItem(Player player) {
+        // Cada item vai ter sua função
+    }
+
+    public void useItem(Enemy enemy) {
+        // Cada item vai ter sua função
     }
 }
