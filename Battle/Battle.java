@@ -21,11 +21,10 @@ public class Battle {
     public int turnAction() {
         ClearScreen.clrscr();
         Scanner scan = new Scanner(System.in);
-
         int choice;
         do {
             System.out.println(" ");
-            System.out.println("Você é atacado por " + this.enemy.getName() + ":");
+            System.out.println("Você é atacado por " + enemy.getName() + ":");
             System.out.println(" ");
             System.out.println(enemy.getImage());
             System.out.println(" ");
@@ -41,28 +40,34 @@ public class Battle {
             System.out.println("4 - Magia");
             System.out.println("5 - Fugir");
             System.out.println(" ");
-            
+            ClearScreen.clrscr();
             choice = scan.nextInt();
 
             switch (choice) {
                 case 1:
-                    player.playerAttack(enemy);
-                    enemy.enemyAttack(player, 1);
+                    int dano_player = player.playerAttack(enemy);
+                    System.out.println(" ");
+                    System.out.println(player.getName() + " deu " + dano_player + " de dano");
+
+                    double dano_enemy = enemy.enemyAttack(player, 1);
+                    System.out.println(enemy.getName() + " lhe deu " + dano_enemy + " de dano");
+
                     battleStatus();
                     break;
                 case 2:
-                    enemy.enemyAttack(player, 0.5);
+                    dano_enemy = enemy.enemyAttack(player, 1);
+                    System.out.println(enemy.getName() + " lhe deu " + dano_enemy + " de dano");
                     battleStatus();
                     break;
                 case 3:
                     player.getItems();
-                    enemy.enemyAttack(player, 1);
+                    dano_enemy = enemy.enemyAttack(player, 1);
+                    System.out.println(enemy.getName() + " lhe deu " + dano_enemy + " de dano");
                     battleStatus();
                     break;
                 case 4:
                     //getMagics(); 
                 case 5:
-                    //Volta para o mapa normal, com uma porcentagem é claro
                     enemy.setHP(0);
                     endBattle();
                     this.map.setMapOn(true);
@@ -99,7 +104,7 @@ public class Battle {
         int playerWin = endBattle();
         ClearScreen.clrscr();
         if(playerWin == 1){
-            //Aqui faz a chamada da tela de Game Over
+            //Aqui é para fazer a chamada da tela de Game Over
         }
         else if(playerWin == 2) {
             //Aqui faz a chamada para o mapa.

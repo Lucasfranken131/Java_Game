@@ -32,13 +32,17 @@ public abstract class Enemy {
         return attackDamage;
     }
 
-    public void enemyAttack(Player player, double d) {
+    public double enemyAttack(Player player, double d) {
+        double dano;
         if(this.HP > 0) {
-            double dano =  this.attackEnemy(player) * d;
+            dano =  this.attackEnemy(player) * d;
             player.setHP(player.getHP() - dano);
-            System.out.println(this.name + " lhe deu " + dano + " de dano");
+        }
+        else {
+            dano = 0;
         }
         player.correctValues();
+        return dano;
     }
 
     public void getEnemyStats() {

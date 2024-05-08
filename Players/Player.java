@@ -39,14 +39,17 @@ public class Player {
         return damage;
     }
 
-    public void playerAttack(Enemy enemy) {
+    public int playerAttack(Enemy enemy) {
+        int dano;
         if(this.HP > 0) {
-            int dano = this.damage(enemy);
+            dano = this.damage(enemy);
             enemy.setHP(enemy.getHP() - dano);
-            System.out.println(" ");
-            System.out.println(this.name + " deu " + dano + " de dano");
+        }
+        else {
+            dano = 0;
         }
         correctValues();
+        return dano;
     }
 
     public void getPlayerStats() {
