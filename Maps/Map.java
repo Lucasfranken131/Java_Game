@@ -3,6 +3,7 @@ import Battle.Battle;
 import Players.Player;
 import Enemies.Enemy;
 import java.util.Scanner;
+import javax.swing.ImageIcon;
 import System.ClearScreen;
 import java.util.Random;
 
@@ -13,16 +14,14 @@ public class Map {
     public int type; //type 1 = Sem monstros, type 2 = Com monstros
     public String direction;
     public int steps; // é para contar os passos, quantos mais passos maior a chance de ter uma batalha
-    Player player;
-    Enemy enemy;
     public boolean mapOn;
+    public ImageIcon image;
 
-    public Map(int x, int y, int type, String direction, Player player) {
+    public Map(int x, int y, int type, String direction) {
         this.x = x;
         this.y = y;
         this.type = type;
         this.direction = direction;
-        this.player = player;
         this.steps = 0;
     }
 
@@ -52,7 +51,7 @@ public class Map {
         return playerDirection;
     }
 
-    public String movePlayer() {
+    public String movePlayer(Player player, Enemy enemy) {
         String move;
         Scanner scan = new Scanner(System.in);
         System.out.println("w - Ir para cima");
@@ -78,19 +77,19 @@ public class Map {
             ClearScreen.clrscr();
             System.out.println("Opção inválida");
             System.out.println(" ");
-            movePlayer();
+            movePlayer(player, enemy);
         }
         setSteps(steps + 1);
-        mapToBattle();
+        mapToBattle(player, enemy);
         ClearScreen.clrscr();
         return move;
     }
 
-    public void mapToBattle() {
+    public void mapToBattle(Player player, Enemy enemy) {
         Random random = new Random();
         int battleChance = random.nextInt(100 + this.getSteps());
         if(battleChance >= 50) {
-            Battle battle = new Battle(this.player, this.enemy, this);
+            Battle battle = new Battle(player, enemy, this);
         }
     }
 
