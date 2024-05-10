@@ -1,14 +1,11 @@
 package Maps;
 import java.util.Random;
-
 import javax.swing.ImageIcon;
-
 import Battle.Battle;
 import Enemies.Bat;
 import Enemies.Enemy;
 import Enemies.Goblin;
 import Players.Player;
-import System.ClearScreen;
 
 public class Initial extends Map {
     static int type = 2;
@@ -16,19 +13,17 @@ public class Initial extends Map {
 
     public Initial(int x, int y, String direction) {
         super(x, y, type, direction);
-        showMap();
     }
 
-    public void showMap() {
+    public void showMap(Player player) {
         System.out.println("Posição X: " + this.x);
         System.out.println("Posição Y: " + this.y);
         System.out.println("Direção: " + showDirection());
-        movePlayer();
-        ClearScreen.clrscr();
-        showMap();
+        // movePlayer(player);
+        // showMap(player);
     }
 
-    public void mapToBattle() {
+    public void mapToBattle(Player player) {
         Random random = new Random();
         int battleChance = random.nextInt(100 + this.getSteps());
         if(battleChance >= 70) {
@@ -46,7 +41,7 @@ public class Initial extends Map {
             else if(enemyFormation > 75) {
                 enemy1 = new Bat();
             }
-            Battle battle = new Battle(this.player, enemy1, this);
+            Battle battle = new Battle(player, enemy1, this);
             battle = null;
         }
     }

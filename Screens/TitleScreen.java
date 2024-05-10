@@ -6,17 +6,18 @@ import Maps.Initial;
 import Players.Player;
 import javax.swing.*;
 
-
 public class TitleScreen extends JPanel {
-    public TitleScreen() {
+    Screen tela;
+    public TitleScreen(Screen tela) {
+        this.tela = tela;
         // Adiciona um rótulo ao JFrame
         JPanel panel = new JPanel();
-
+        add(panel);
         JButton new_game = new JButton("Novo Jogo");
         JButton load_game = new JButton("Carregar Jogo");
         JButton credits = new JButton("Créditos");
         JButton close = new JButton("Sair");
-        add(panel);
+
         panel.add(new_game);
         panel.add(load_game);
         panel.add(credits);
@@ -33,7 +34,7 @@ public class TitleScreen extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 // Ação a ser executada quando o botão for clicado
                 panel.removeAll();
-                setVisible(true);
+                tela.setPanelOnScreen(2);
                 panel.add(labelUsuario);
                 panel.add(nameTextField);
                 panel.add(send);
@@ -44,11 +45,11 @@ public class TitleScreen extends JPanel {
                 send.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        Screen.setPanelOnScreen(2);
                         String name = nameTextField.getText();
-                        Bag bolsa = new Bag();
-                        Player player = new Player(name, 50, 50, 10, 10, 10, 10, 10, 1, bolsa);
-                        Initial initial = new Initial(5, 12, "up", player);
+                        // Bag bolsa = new Bag();
+                        // Initial initial = new Initial(0, 0, "up");
+                        // Player player = new Player(name, 50, 50, 10, 10, 10, 10, 10, 1, bolsa, initial);
+                        tela.setPanelOnScreen(2);
                     }
                 });
             }
@@ -57,11 +58,7 @@ public class TitleScreen extends JPanel {
         load_game.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                panel.remove(new_game);
-                panel.remove(load_game);
-                panel.remove(credits);
-                panel.remove(close);
-
+                panel.removeAll();
                 panel.revalidate();
                 panel.repaint();
             }

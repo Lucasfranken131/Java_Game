@@ -1,6 +1,7 @@
 package Players;
 import Enemies.Enemy;
 import Items.Bolsa.Bag;
+import Maps.Map;
 
 public class Player {
 
@@ -14,8 +15,9 @@ public class Player {
     private int speed;
     private int level;
     Bag bag;
+    Map map;
 
-    public Player(String name, double HP, double maxHP, int attack, int defense, int mana, int maxMana, int speed, int level, Bag bag) {
+    public Player(String name, double HP, double maxHP, int attack, int defense, int mana, int maxMana, int speed, int level, Bag bag, Map map) {
         this.name = name;
         this.HP = HP;
         this.maxHP = maxHP;
@@ -26,6 +28,7 @@ public class Player {
         this.speed = speed;
         this.level = level;
         this.bag = bag;
+        this.map = map;
     }
 
     public int damage(Enemy enemy) {
@@ -85,6 +88,10 @@ public class Player {
 
     public void getItems() {
         bag.displayItems(this);
+    }
+
+    public void getMap() {
+        map.showMap(this);
     }
     
     public double setHP(double HP){

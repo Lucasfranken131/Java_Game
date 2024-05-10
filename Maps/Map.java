@@ -1,21 +1,19 @@
 package Maps;
 import Battle.Battle;
 import Players.Player;
+import Enemies.Bat;
 import Enemies.Enemy;
 import java.util.Scanner;
-import javax.swing.ImageIcon;
-import System.ClearScreen;
 import java.util.Random;
 
 public class Map {
     public int x;
     public int y;
     public String area;
-    public int type; //type 1 = Sem monstros, type 2 = Com monstros
+    public int type; //type 1 = Mapa sem monstros, type 2 = Mapa com monstros
     public String direction;
     public int steps; // é para contar os passos, quantos mais passos maior a chance de ter uma batalha
     public boolean mapOn;
-    public ImageIcon image;
 
     public Map(int x, int y, int type, String direction) {
         this.x = x;
@@ -51,7 +49,7 @@ public class Map {
         return playerDirection;
     }
 
-    public String movePlayer(Player player, Enemy enemy) {
+    public String movePlayer(Player player) {
         String move;
         Scanner scan = new Scanner(System.in);
         System.out.println("w - Ir para cima");
@@ -74,19 +72,18 @@ public class Map {
             setX(this.x + 1);
         }
         else {
-            ClearScreen.clrscr();
             System.out.println("Opção inválida");
             System.out.println(" ");
-            movePlayer(player, enemy);
+            movePlayer(player);
         }
         setSteps(steps + 1);
-        mapToBattle(player, enemy);
-        ClearScreen.clrscr();
+        mapToBattle(player);
         return move;
     }
 
-    public void mapToBattle(Player player, Enemy enemy) {
+    public void mapToBattle(Player player) {
         Random random = new Random();
+        Enemy enemy = new Bat();
         int battleChance = random.nextInt(100 + this.getSteps());
         if(battleChance >= 50) {
             Battle battle = new Battle(player, enemy, this);
@@ -127,5 +124,9 @@ public class Map {
 
     public void showMap() {
         //Feito para ser chamado nas sub-classes
+    }
+
+    public void showMap(Player player) {
+        //Também só para ser feita a chamada nas sub-classes
     }
 }

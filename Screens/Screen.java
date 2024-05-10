@@ -1,7 +1,7 @@
+package Screens;
 import javax.swing.JFrame;
 
 public class Screen extends JFrame {
-    static int panelOnScreen = 1;
 
     public Screen() {
         // Define o título do JFrame
@@ -15,11 +15,25 @@ public class Screen extends JFrame {
         setVisible(true);
         // Centraliza o JFrame na tela
         setLocationRelativeTo(null);
-        TitleScreen titulo = new TitleScreen();
-        add(titulo);
+        revalidate();
+        repaint();
+        switchScreen(1);
     }
 
-    public static void setPanelOnScreen(int value) {
-        panelOnScreen = value;
+    public void setPanelOnScreen(int value) {
+        switchScreen(value);
+    }
+
+    public void switchScreen(int panelOnScreen) {
+        switch (panelOnScreen) {
+            case 1:          
+                TitleScreen titulo = new TitleScreen(this);
+                add(titulo);
+                break;
+            case 2:
+                MapScreen map = new MapScreen(this);
+                add(map);
+                break;
+        }
     }
 }
